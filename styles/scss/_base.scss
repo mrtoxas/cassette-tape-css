@@ -1,0 +1,91 @@
+:root {
+  --background: #dcedc8;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  background-color: var(--background);
+}
+
+.footer {
+  position: relative;
+  grid-row-start: 3;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  font-family: "Dancing Script", cursive;
+  font-weight: 700;
+  color: #231f20;
+}
+
+.header {
+  text-align: right;
+  padding: 20px 20px 0;
+}
+
+.container {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.play-btn {
+  cursor: pointer;
+  display: inline-block;
+  &:hover {
+    svg {
+      fill: #3e403e;
+    }
+  }
+  &[data-volume="off"] {
+    .play-icon-mute {
+      display: inline-block;
+    }
+    .play-icon-volume {
+      display: none;
+    }
+  }
+
+  &[data-volume="on"] {
+    .play-icon-mute {
+      display: none;
+    }
+    .play-icon-volume {
+      display: inline-block;
+    }
+  }
+}
+
+#player {
+  display: none;
+}
+
+.github-link {
+  position: absolute;
+  text-decoration: none;
+  outline: none;
+  right: 18px;
+  svg {
+    fill: #686d69;
+  }
+  &:hover {
+    svg {
+      fill: #3e403e;
+    }
+  }
+}
+
+.heart{
+  font-size:14px;
+  vertical-align: middle;
+  padding: 0 .3em
+}

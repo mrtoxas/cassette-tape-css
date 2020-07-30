@@ -1,0 +1,354 @@
+:root {
+  --progress: 20; /*percent of progress*/
+  --progress-right: calc((130px * var(--progress)) / 100);
+  --progress-left: calc(130px - var(--progress-right));
+  --speed-spool: 5s;
+}
+
+.tape {
+  width: 500px;
+  height: 270px;
+  margin: 0 auto;
+  position: relative;
+  padding: 25px 25px 0 25px;
+  background-color: #231f20;
+  border-radius: 15px;
+  font-size: 16px;
+}
+
+.tape-screw {
+  width: 1em;
+  height: 1em;
+  padding: 0.188em;
+  position: absolute;
+  border-radius: 50%;
+  background-color: #c3c3c5;
+  overflow: hidden;
+  &:nth-child(1) {
+    left: 7px;
+    top: 7px;
+    transform: rotate(20deg);
+  }
+  &:nth-child(2) {
+    right: 7px;
+    top: 7px;
+    transform: rotate(40deg);
+  }
+  &:nth-child(3) {
+    left: 7px;
+    bottom: 9px;
+    transform: rotate(-5deg);
+  }
+  &:nth-child(4) {
+    right: 7px;
+    bottom: 10px;
+    transform: rotate(10deg);
+  }
+}
+
+.tape-screw-overflow {
+  width: 100%;
+  height: 100%;
+  background-color: #1d1b1e;
+  & > div {
+    &:before,
+    &:after {
+      content: "";
+      position: absolute;
+      width: 0.625em;
+      height: 0.625em;
+      background-color: #c3c3c5;
+      border-radius: 0.188em;
+    }
+    &:nth-child(1) {
+      &:before {
+        right: calc(50% + 0.063em);
+        bottom: calc(50% + 0.063em);
+      }
+      &:after {
+        left: calc(50% + 0.063em);
+        bottom: calc(50% + 0.063em);
+      }
+    }
+    &:nth-child(2) {
+      &:before {
+        right: calc(50% + 0.063em);
+        top: calc(50% + 0.063em);
+      }
+      &:after {
+        left: calc(50% + 0.063em);
+        top: calc(50% + 0.063em);
+      }
+    }
+  }
+}
+
+.tape-header {
+  position: relative;
+  height: 50px;
+  padding-left: 6px;
+  padding-top: 12px;
+  overflow: hidden;
+  background-color: red;
+  border-radius: 15px 15px 0 0;
+  font-family: "Rowdies", cursive;
+  font-size: 26px;
+  color: #686d69;
+  background-color: #faeed8;
+
+  &:before {
+    content: "";
+    position: absolute;
+    height: 16px;
+    top: 20px;
+    left: 36px;
+    right: 16px;
+    z-index: 1;
+    box-shadow: 0px -1px 0px 0px #d3d0c7, 0px -2px 0px 0px #9a968b, 0px 1px 0px 0px #9a968b, 0px 2px 0px 0px #d3d0c7;
+  }
+}
+
+.tape-title {
+  position: absolute;
+  top: 3px;
+  right: 50px;
+  color: #2c303a;
+  z-index: 1;
+  font-family: "Homemade Apple", cursive;
+  transform: rotate(-5deg);
+  font-size: 20px;
+}
+
+.tape-body {
+  height: 120px;
+  padding-top: 5px;
+  border-radius: 0 0 15px 15px;
+  background: linear-gradient(to bottom, #e97f2f 0%, #e97f2f 99px, #c5532e 100px, #c5532e 100%);
+}
+
+.tape-window {
+  width: 290px;
+  height: 80px;
+  margin: 0 auto;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: white;
+  position: relative;
+  &:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    box-shadow: inset 0px 0px 0px 10px #231f20;
+  }
+}
+.tape-spools {
+  background-color: var(--background);
+  padding: 5px 10px;
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  right: 5px;
+  bottom: 5px;
+  overflow: hidden;
+  &:before,
+  &:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 75px;
+    background-color: #231f20;
+    z-index: 1;
+  }
+  &:after {
+    right: 3px;
+  }
+  &:before {
+    left: 3px;
+  }
+}
+
+.tape-spool {
+  width: 60px;
+  height: 60px;
+  position: relative;
+}
+.tape-spoolbar {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+  margin-top: 1px;
+  width: 58px;
+  height: 58px;
+  border: 5px solid #a2a3a7;
+  border-radius: 50px;
+  background-color: var(--background);
+  animation: tape-spol-rotate var(--speed-spool) linear infinite;
+  &:before {
+    content: "";
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    bottom: 5px;
+    right: 5px;
+    z-index: 1;
+    border-radius: inherit;
+    background-color: var(--background);
+  }
+  & > div {
+    position: absolute;
+    width: 6px;
+    top:-2px;
+    bottom:-2px;
+    background-color: #a2a3a7;
+    &:nth-child(2) {
+      transform: rotate(120deg);
+    }
+    &:nth-child(3) {
+      transform: rotate(240deg);
+    }
+  }
+}
+/**/
+.tape-film-container {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.tape-film {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 90px;
+  min-height: 90px;
+  border-radius: 50%;
+  border: 1px solid #0f0f0f;
+  background: #6a352d repeating-radial-gradient(#6a352d, #6a352d 1px, #7c3835 2px, #7c3835 3px);
+  animation: tape-spol-rotate 7s linear infinite;
+  &:before {
+    content: "";
+    position: absolute;
+    width: 90px;
+    height: 90px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background-color: #98999d;
+  }
+}
+
+.tape-spool:nth-child(1) .tape-film {
+  width: calc(90px + var(--progress-left));
+  height: calc(90px + var(--progress-left));
+}
+
+.tape-spool:nth-child(2) .tape-film {
+  width: calc(90px + var(--progress-right));
+  height: calc(90px + var(--progress-right));
+}
+
+.tape-footer {
+  position: relative;
+  width: 280px;
+  height: 67px;
+  margin: 6px auto 0;
+  border-top: 3px solid #828186;
+  &:before {
+    content: "";
+    position: absolute;
+    width: 3px;
+    top: -2px;
+    bottom: 0;
+    right: 0;
+    transform: rotate(-20deg);
+    transform-origin: 0 0;
+    background-color: #828186;
+  }
+  &:after {
+    content: "";
+    position: absolute;
+    top: -3px;
+    left: -1px;
+    bottom: 0;
+    width: 2px;
+    transform: rotate(20deg);
+    transform-origin: 0 0;
+    background-color: #828186;
+  }
+}
+
+.tape-hole {
+  &:before,
+  &:after {
+    content: "";
+    position: absolute;
+    background-color: var(--background);
+    z-index: 3;
+  }
+  &-radial {
+    &:before,
+    &:after {
+      width: 18px;
+      height: 18px;
+      bottom: 5px;
+      border-radius: 50%;
+    }
+    &:before {
+      left: 30px;
+    }
+    &:after {
+      right: 30px;
+    }
+  }
+  &-square {
+    &:before,
+    &:after {
+      content: "";
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      bottom: 10px;
+      border-radius: 5px;
+      z-index: 3;
+      background-color: var(--background);
+    }
+    &:before {
+      left: 84px;
+    }
+    &:after {
+      right: 84px;
+    }
+  }
+}
+
+.tape-footer .tape-screw {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: auto;
+  margin: 0 auto;
+  bottom: 30px;
+  font-size: 22px;
+  transform: rotate(60deg);
+}
+
+.tape:hover .progress-range{
+  opacity: 1;
+}
+
+@keyframes tape-spol-rotate {
+  from {
+    transform: rotate(360deg);
+  }
+}

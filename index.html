@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=600">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Homemade+Apple&family=Rowdies:wght@700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="styles/main.min.css">
+  <title>Cassette tape in CSS</title>
+</head>
+
+<body>
+  <div class="header">
+    <audio id="player" controls="controls">
+      <source src="https://streams.ffh.de/ffhchannels/mp3/playerid:RTFFHTunein/hq80er.mp3">
+    </audio>
+    <div id="playBtn" class="play-btn" data-volume='off' onclick="" title="Radio Tele FFH GmbH / www.ffh.de ">
+      <svg class="play-icon-mute" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#686d69" width="22px"
+        height="22px">
+        <path d="M0 0h24v24H0z" fill="none" />
+        <path
+          d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z" />
+      </svg>
+      <svg class="play-icon-volume" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#686d69" width="22px"
+        height="22px">
+        <path d="M0 0h24v24H0z" fill="none" />
+        <path
+          d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z" />
+      </svg>
+    </div>
+  </div>
+  <div class="container">
+    <div class="tape">
+      <div class="progress-range">
+        <input id="progressRange" class="input" value="20" type="range" title="Progress" max=98 min=2>  
+      </div>
+      <div class="tape-screws">
+        <div class="tape-screw">
+          <div class="tape-screw-overflow">
+            <div></div>
+            <div></div>
+          </div>
+        </div>
+        <div class="tape-screw">
+          <div class="tape-screw-overflow">
+            <div></div>
+            <div></div>
+          </div>
+        </div>
+        <div class="tape-screw">
+          <div class="tape-screw-overflow">
+            <div></div>
+            <div></div>
+          </div>
+        </div>
+        <div class="tape-screw">
+          <div class="tape-screw-overflow">
+            <div></div>
+            <div></div>
+          </div>
+        </div>
+      </div>
+      <div class="tape-header">A
+        <div class="tape-title">
+          Back to the future
+        </div>
+      </div>
+      <div class="tape-body">
+        <div class="tape-window">
+          <div class="tape-spools">
+            <div class="tape-spool">
+              <div class="tape-spoolbar">
+                <div></div>
+                <div></div>
+                <div></div>
+              </div>
+              <div class="tape-film-container">
+                <div class="tape-film"></div>
+              </div>
+            </div>
+            <div class="tape-spool">
+              <div class="tape-spoolbar">
+                <div></div>
+                <div></div>
+                <div></div>
+              </div>
+              <div class="tape-film-container">
+                <div class="tape-film"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tape-footer">
+        <div class="tape-holes">
+          <div class="tape-hole tape-hole-radial"></div>
+          <div class="tape-hole tape-hole-square"></div>
+        </div>
+        <div class="tape-screw">
+          <div class="tape-screw-overflow">
+            <div></div>
+            <div></div>
+          </div>
+        </div>
+      </div>
+    </div>        
+  </div>
+  <div class="footer">
+    Made with <span class="heart"> ❤️ </span> for CSS
+    <a href="https://github.com/mrtoxas/cassette-tape-in-css" class="github-link" title="Go to code">
+      <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+        <path d="M0 0h24v24H0V0z" fill="none" />
+        <path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z" /></svg>
+    </a>
+  </div>
+
+  <script src="scripts/main.js"></script>
+</body>
+
+</html>
